@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../../../mldata/wikitext-2-raw"
+		}
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#383e45",
+			"activityBar.background": "#383e45",
+			"activityBar.foreground": "#e7e7e7",
+			"activityBar.inactiveForeground": "#e7e7e799",
+			"activityBarBadge.background": "#bf407b",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"commandCenter.border": "#e7e7e799",
+			"sash.hoverBorder": "#383e45",
+			"statusBar.background": "#212529",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#383e45",
+			"statusBarItem.remoteBackground": "#212529",
+			"statusBarItem.remoteForeground": "#e7e7e7",
+			"titleBar.activeBackground": "#212529",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.inactiveBackground": "#21252999",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		},
+		"peacock.color": "#212529"
+	}
+}
