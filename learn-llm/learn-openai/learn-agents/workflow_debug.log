@@ -1,0 +1,687 @@
+2025-04-23 00:26:00,972:DEBUG:asyncio:Using selector: EpollSelector
+What kind of story do you want?An adventure story about an android who acts as security for human expiditions to unknown planets.
+2025-04-23 00:26:46,637:DEBUG:openai.agents:Creating trace Agent workflow with id trace_0f6d9ad20d93456087b5313287ca323c
+2025-04-23 00:26:46,637:DEBUG:openai.agents:Setting current trace: trace_0f6d9ad20d93456087b5313287ca323c
+2025-04-23 00:26:46,637:DEBUG:openai.agents:Creating span <agents.tracing.span_data.AgentSpanData object at 0x7931bb445590> with id None
+2025-04-23 00:26:46,638:DEBUG:openai.agents:Running agent Writer Agent (turn 1)
+2025-04-23 00:26:46,644:DEBUG:openai.agents:Creating span <agents.tracing.span_data.ResponseSpanData object at 0x7931bb44b810> with id None
+2025-04-23 00:26:46,644:DEBUG:openai.agents:Calling LLM gpt-4o -
+Instructions:
+Write a short story based on user's input. First generate an outline.If the outline is good and for a scifi story, then write the full story.Otherwise, tell the user that outline was not good quality and stop.
+Input:
+[
+  {
+    "content": "An adventure story about an android who acts as security for human expiditions to unknown planets.",
+    "role": "user"
+  }
+]
+Tools:
+[
+  {
+    "name": "story_outline_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "story_outline_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Generates a short story outline."
+  },
+  {
+    "name": "outline_checker_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "outline_checker_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Judges the quality of a given story outline. Also determines whether the outline is for a scifi story."
+  },
+  {
+    "name": "story_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "story_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Outputs a short story based on the given outline."
+  }
+]
+Stream: False
+Tool choice: NOT_GIVEN
+Response format: NOT_GIVEN
+Previous response id: None
+
+2025-04-23 00:26:46,649:DEBUG:openai._base_client:Request options: {'method': 'post', 'url': '/responses', 'headers': {'User-Agent': 'Agents/Python 0.0.11'}, 'files': None, 'json_data': {'input': [{'content': 'An adventure story about an android who acts as security for human expiditions to unknown planets.', 'role': 'user'}], 'model': 'gpt-4o', 'include': [], 'instructions': "Write a short story based on user's input. First generate an outline.If the outline is good and for a scifi story, then write the full story.Otherwise, tell the user that outline was not good quality and stop.", 'stream': False, 'tools': [{'name': 'story_outline_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'story_outline_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Generates a short story outline.'}, {'name': 'outline_checker_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'outline_checker_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Judges the quality of a given story outline. Also determines whether the outline is for a scifi story.'}, {'name': 'story_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'story_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Outputs a short story based on the given outline.'}]}}
+2025-04-23 00:26:49,005:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-04-23 00:26:49,006:DEBUG:openai._base_client:HTTP Request: POST https://api.openai.com/v1/responses "200 OK"
+2025-04-23 00:26:49,020:DEBUG:openai.agents:LLM resp:
+[
+  {
+    "arguments": "{\"input\":\"An adventure story about an android who acts as security for human expeditions to unknown planets.\"}",
+    "call_id": "call_ashvq4t2MB7xSFDYPNVHbwCF",
+    "name": "story_outline_agent_tool",
+    "type": "function_call",
+    "id": "fc_680896391a248191a6bbadf61271c4a80c7afdfec0b42e0f",
+    "status": "completed"
+  }
+]
+
+2025-04-23 00:26:49,021:DEBUG:openai.agents:Creating span <agents.tracing.span_data.FunctionSpanData object at 0x7931bb4e3390> with id None
+2025-04-23 00:26:49,021:DEBUG:openai.agents:Invoking tool story_outline_agent_tool with input {"input":"An adventure story about an android who acts as security for human expeditions to unknown planets."}
+2025-04-23 00:26:49,021:DEBUG:openai.agents:Tool call args: ['An adventure story about an android who acts as security for human expeditions to unknown planets.'], kwargs: {}
+2025-04-23 00:26:49,021:DEBUG:openai.agents:Creating span <agents.tracing.span_data.AgentSpanData object at 0x7931bb4e3750> with id None
+2025-04-23 00:26:49,021:DEBUG:openai.agents:Running agent story_outline_agent (turn 1)
+2025-04-23 00:26:49,021:DEBUG:openai.agents:Creating span <agents.tracing.span_data.ResponseSpanData object at 0x7931bbb04d10> with id None
+2025-04-23 00:26:49,021:DEBUG:openai.agents:Calling LLM gpt-4o -
+Instructions:
+Generate a very short story outline based on the user's input.
+Input:
+[
+  {
+    "content": "An adventure story about an android who acts as security for human expeditions to unknown planets.",
+    "role": "user"
+  }
+]
+Tools:
+[]
+Stream: False
+Tool choice: NOT_GIVEN
+Response format: NOT_GIVEN
+Previous response id: None
+
+2025-04-23 00:26:49,023:DEBUG:openai._base_client:Request options: {'method': 'post', 'url': '/responses', 'headers': {'User-Agent': 'Agents/Python 0.0.11'}, 'files': None, 'json_data': {'input': [{'content': 'An adventure story about an android who acts as security for human expeditions to unknown planets.', 'role': 'user'}], 'model': 'gpt-4o', 'include': [], 'instructions': "Generate a very short story outline based on the user's input.", 'stream': False, 'tools': []}}
+2025-04-23 00:26:51,488:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-04-23 00:26:51,488:DEBUG:openai.agents:Exported 2 items
+2025-04-23 00:26:56,873:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-04-23 00:26:56,874:DEBUG:openai._base_client:HTTP Request: POST https://api.openai.com/v1/responses "200 OK"
+2025-04-23 00:26:56,877:DEBUG:openai.agents:LLM resp:
+[
+  {
+    "id": "msg_6808963a10c08191ad2321b814131eaa03f0ead2c802e5ce",
+    "content": [
+      {
+        "annotations": [],
+        "text": "**Title: Guardian of the Unknown**\n\n**Genre:** Science Fiction/Adventure\n\n**Setting:** Various uncharted planets in a distant galaxy\n\n**Main Character:** Aria, a state-of-the-art security android\n\n**Plot Outline:**\n\n1. **Introduction:**\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. **Journey to the First Planet:**\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. **Discovery and Conflict:**\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. **A Test of Humanity:**\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\n\n5. **Resolution:**\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. **Reflection:**\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  }
+]
+
+2025-04-23 00:26:56,877:DEBUG:openai.agents:Tool story_outline_agent_tool returned **Title: Guardian of the Unknown**
+
+**Genre:** Science Fiction/Adventure
+
+**Setting:** Various uncharted planets in a distant galaxy
+
+**Main Character:** Aria, a state-of-the-art security android
+
+**Plot Outline:**
+
+1. **Introduction:**
+   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.
+   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.
+
+2. **Journey to the First Planet:**
+   - The team lands on a lush, vibrant planet with mysterious flora and fauna.
+   - Aria detects an anomalous energy signal and leads the group to investigate.
+
+3. **Discovery and Conflict:**
+   - The team encounters a powerful, sentient alien species with hidden motives.
+   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.
+
+4. **A Test of Humanity:**
+   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.
+   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.
+
+5. **Resolution:**
+   - Aria negotiates peace with the aliens, securing the release of the scientist.
+   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.
+
+6. **Reflection:**
+   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.
+   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.
+2025-04-23 00:26:56,877:DEBUG:openai.agents:Running agent Writer Agent (turn 2)
+2025-04-23 00:26:56,877:DEBUG:openai.agents:Creating span <agents.tracing.span_data.ResponseSpanData object at 0x7931bb45e510> with id None
+2025-04-23 00:26:56,877:DEBUG:openai.agents:Calling LLM gpt-4o -
+Instructions:
+Write a short story based on user's input. First generate an outline.If the outline is good and for a scifi story, then write the full story.Otherwise, tell the user that outline was not good quality and stop.
+Input:
+[
+  {
+    "content": "An adventure story about an android who acts as security for human expiditions to unknown planets.",
+    "role": "user"
+  },
+  {
+    "arguments": "{\"input\":\"An adventure story about an android who acts as security for human expeditions to unknown planets.\"}",
+    "call_id": "call_ashvq4t2MB7xSFDYPNVHbwCF",
+    "name": "story_outline_agent_tool",
+    "type": "function_call",
+    "id": "fc_680896391a248191a6bbadf61271c4a80c7afdfec0b42e0f",
+    "status": "completed"
+  },
+  {
+    "call_id": "call_ashvq4t2MB7xSFDYPNVHbwCF",
+    "output": "**Title: Guardian of the Unknown**\n\n**Genre:** Science Fiction/Adventure\n\n**Setting:** Various uncharted planets in a distant galaxy\n\n**Main Character:** Aria, a state-of-the-art security android\n\n**Plot Outline:**\n\n1. **Introduction:**\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. **Journey to the First Planet:**\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. **Discovery and Conflict:**\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. **A Test of Humanity:**\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\n\n5. **Resolution:**\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. **Reflection:**\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.",
+    "type": "function_call_output"
+  }
+]
+Tools:
+[
+  {
+    "name": "story_outline_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "story_outline_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Generates a short story outline."
+  },
+  {
+    "name": "outline_checker_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "outline_checker_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Judges the quality of a given story outline. Also determines whether the outline is for a scifi story."
+  },
+  {
+    "name": "story_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "story_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Outputs a short story based on the given outline."
+  }
+]
+Stream: False
+Tool choice: NOT_GIVEN
+Response format: NOT_GIVEN
+Previous response id: None
+
+2025-04-23 00:26:56,882:DEBUG:openai._base_client:Request options: {'method': 'post', 'url': '/responses', 'headers': {'User-Agent': 'Agents/Python 0.0.11'}, 'files': None, 'json_data': {'input': [{'content': 'An adventure story about an android who acts as security for human expiditions to unknown planets.', 'role': 'user'}, {'arguments': '{"input":"An adventure story about an android who acts as security for human expeditions to unknown planets."}', 'call_id': 'call_ashvq4t2MB7xSFDYPNVHbwCF', 'name': 'story_outline_agent_tool', 'type': 'function_call', 'id': 'fc_680896391a248191a6bbadf61271c4a80c7afdfec0b42e0f', 'status': 'completed'}, {'call_id': 'call_ashvq4t2MB7xSFDYPNVHbwCF', 'output': '**Title: Guardian of the Unknown**\n\n**Genre:** Science Fiction/Adventure\n\n**Setting:** Various uncharted planets in a distant galaxy\n\n**Main Character:** Aria, a state-of-the-art security android\n\n**Plot Outline:**\n\n1. **Introduction:**\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. **Journey to the First Planet:**\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. **Discovery and Conflict:**\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. **A Test of Humanity:**\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. **Resolution:**\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. **Reflection:**\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.', 'type': 'function_call_output'}], 'model': 'gpt-4o', 'include': [], 'instructions': "Write a short story based on user's input. First generate an outline.If the outline is good and for a scifi story, then write the full story.Otherwise, tell the user that outline was not good quality and stop.", 'stream': False, 'tools': [{'name': 'story_outline_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'story_outline_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Generates a short story outline.'}, {'name': 'outline_checker_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'outline_checker_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Judges the quality of a given story outline. Also determines whether the outline is for a scifi story.'}, {'name': 'story_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'story_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Outputs a short story based on the given outline.'}]}}
+2025-04-23 00:27:02,249:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-04-23 00:27:02,249:DEBUG:openai.agents:Exported 3 items
+2025-04-23 00:27:03,527:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-04-23 00:27:03,528:DEBUG:openai._base_client:HTTP Request: POST https://api.openai.com/v1/responses "200 OK"
+2025-04-23 00:27:03,529:DEBUG:openai.agents:LLM resp:
+[
+  {
+    "arguments": "{\"input\":\"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.\"}",
+    "call_id": "call_9itDy5YuM2uVI7R7uhckx5Te",
+    "name": "outline_checker_agent_tool",
+    "type": "function_call",
+    "id": "fc_68089642a3348191879b2340931e87840c7afdfec0b42e0f",
+    "status": "completed"
+  }
+]
+
+2025-04-23 00:27:03,529:DEBUG:openai.agents:Creating span <agents.tracing.span_data.FunctionSpanData object at 0x7931bb4e2ad0> with id None
+2025-04-23 00:27:03,530:DEBUG:openai.agents:Invoking tool outline_checker_agent_tool with input {"input":"Title: Guardian of the Unknown\nGenre: Science Fiction/Adventure\nSetting: Various uncharted planets in a distant galaxy\nMain Character: Aria, a state-of-the-art security android\n\nPlot Outline:\n\n1. Introduction:\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. Journey to the First Planet:\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. Discovery and Conflict:\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. A Test of Humanity:\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. Resolution:\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. Reflection:\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars."}
+2025-04-23 00:27:03,530:DEBUG:openai.agents:Tool call args: ['Title: Guardian of the Unknown\nGenre: Science Fiction/Adventure\nSetting: Various uncharted planets in a distant galaxy\nMain Character: Aria, a state-of-the-art security android\n\nPlot Outline:\n\n1. Introduction:\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. Journey to the First Planet:\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. Discovery and Conflict:\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. A Test of Humanity:\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. Resolution:\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. Reflection:\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.'], kwargs: {}
+2025-04-23 00:27:03,530:DEBUG:openai.agents:Creating span <agents.tracing.span_data.AgentSpanData object at 0x7931bab3d450> with id None
+2025-04-23 00:27:03,531:DEBUG:openai.agents:Running agent outline_checker_agent (turn 1)
+2025-04-23 00:27:03,532:DEBUG:openai.agents:Creating span <agents.tracing.span_data.ResponseSpanData object at 0x7931bab1b390> with id None
+2025-04-23 00:27:03,532:DEBUG:openai.agents:Calling LLM gpt-4o -
+Instructions:
+Read the given story outline, and judge the quality. Also, determine if it is a scifi story.
+Input:
+[
+  {
+    "content": "Title: Guardian of the Unknown\nGenre: Science Fiction/Adventure\nSetting: Various uncharted planets in a distant galaxy\nMain Character: Aria, a state-of-the-art security android\n\nPlot Outline:\n\n1. Introduction:\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. Journey to the First Planet:\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. Discovery and Conflict:\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. A Test of Humanity:\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\n\n5. Resolution:\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. Reflection:\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.",
+    "role": "user"
+  }
+]
+Tools:
+[]
+Stream: False
+Tool choice: NOT_GIVEN
+Response format: {'format': {'type': 'json_schema', 'name': 'final_output', 'schema': {'properties': {'good_quality': {'title': 'Good Quality', 'type': 'boolean'}, 'is_scifi': {'title': 'Is Scifi', 'type': 'boolean'}}, 'required': ['good_quality', 'is_scifi'], 'title': 'OutlineCheckerOutput', 'type': 'object', 'additionalProperties': False}, 'strict': True}}
+Previous response id: None
+
+2025-04-23 00:27:03,534:DEBUG:openai._base_client:Request options: {'method': 'post', 'url': '/responses', 'headers': {'User-Agent': 'Agents/Python 0.0.11'}, 'files': None, 'json_data': {'input': [{'content': 'Title: Guardian of the Unknown\nGenre: Science Fiction/Adventure\nSetting: Various uncharted planets in a distant galaxy\nMain Character: Aria, a state-of-the-art security android\n\nPlot Outline:\n\n1. Introduction:\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. Journey to the First Planet:\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. Discovery and Conflict:\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. A Test of Humanity:\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. Resolution:\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. Reflection:\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.', 'role': 'user'}], 'model': 'gpt-4o', 'include': [], 'instructions': 'Read the given story outline, and judge the quality. Also, determine if it is a scifi story.', 'stream': False, 'text': {'format': {'type': 'json_schema', 'name': 'final_output', 'schema': {'properties': {'good_quality': {'title': 'Good Quality', 'type': 'boolean'}, 'is_scifi': {'title': 'Is Scifi', 'type': 'boolean'}}, 'required': ['good_quality', 'is_scifi'], 'title': 'OutlineCheckerOutput', 'type': 'object', 'additionalProperties': False}, 'strict': True}}, 'tools': []}}
+2025-04-23 00:27:05,348:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-04-23 00:27:05,348:DEBUG:openai._base_client:HTTP Request: POST https://api.openai.com/v1/responses "200 OK"
+2025-04-23 00:27:05,349:DEBUG:openai.agents:LLM resp:
+[
+  {
+    "id": "msg_68089649874481918ab2524dee6341110cd7cef31b18c715",
+    "content": [
+      {
+        "annotations": [],
+        "text": "{\"good_quality\":true,\"is_scifi\":true}",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  }
+]
+
+2025-04-23 00:27:05,349:DEBUG:openai.agents:Tool outline_checker_agent_tool returned {"good_quality":true,"is_scifi":true}
+2025-04-23 00:27:05,350:DEBUG:openai.agents:Running agent Writer Agent (turn 3)
+2025-04-23 00:27:05,350:DEBUG:openai.agents:Creating span <agents.tracing.span_data.ResponseSpanData object at 0x7931bb44b850> with id None
+2025-04-23 00:27:05,350:DEBUG:openai.agents:Calling LLM gpt-4o -
+Instructions:
+Write a short story based on user's input. First generate an outline.If the outline is good and for a scifi story, then write the full story.Otherwise, tell the user that outline was not good quality and stop.
+Input:
+[
+  {
+    "content": "An adventure story about an android who acts as security for human expiditions to unknown planets.",
+    "role": "user"
+  },
+  {
+    "arguments": "{\"input\":\"An adventure story about an android who acts as security for human expeditions to unknown planets.\"}",
+    "call_id": "call_ashvq4t2MB7xSFDYPNVHbwCF",
+    "name": "story_outline_agent_tool",
+    "type": "function_call",
+    "id": "fc_680896391a248191a6bbadf61271c4a80c7afdfec0b42e0f",
+    "status": "completed"
+  },
+  {
+    "call_id": "call_ashvq4t2MB7xSFDYPNVHbwCF",
+    "output": "**Title: Guardian of the Unknown**\n\n**Genre:** Science Fiction/Adventure\n\n**Setting:** Various uncharted planets in a distant galaxy\n\n**Main Character:** Aria, a state-of-the-art security android\n\n**Plot Outline:**\n\n1. **Introduction:**\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. **Journey to the First Planet:**\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. **Discovery and Conflict:**\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. **A Test of Humanity:**\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\n\n5. **Resolution:**\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. **Reflection:**\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"input\":\"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.\"}",
+    "call_id": "call_9itDy5YuM2uVI7R7uhckx5Te",
+    "name": "outline_checker_agent_tool",
+    "type": "function_call",
+    "id": "fc_68089642a3348191879b2340931e87840c7afdfec0b42e0f",
+    "status": "completed"
+  },
+  {
+    "call_id": "call_9itDy5YuM2uVI7R7uhckx5Te",
+    "output": "{\"good_quality\":true,\"is_scifi\":true}",
+    "type": "function_call_output"
+  }
+]
+Tools:
+[
+  {
+    "name": "story_outline_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "story_outline_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Generates a short story outline."
+  },
+  {
+    "name": "outline_checker_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "outline_checker_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Judges the quality of a given story outline. Also determines whether the outline is for a scifi story."
+  },
+  {
+    "name": "story_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "story_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Outputs a short story based on the given outline."
+  }
+]
+Stream: False
+Tool choice: NOT_GIVEN
+Response format: NOT_GIVEN
+Previous response id: None
+
+2025-04-23 00:27:05,357:DEBUG:openai._base_client:Request options: {'method': 'post', 'url': '/responses', 'headers': {'User-Agent': 'Agents/Python 0.0.11'}, 'files': None, 'json_data': {'input': [{'content': 'An adventure story about an android who acts as security for human expiditions to unknown planets.', 'role': 'user'}, {'arguments': '{"input":"An adventure story about an android who acts as security for human expeditions to unknown planets."}', 'call_id': 'call_ashvq4t2MB7xSFDYPNVHbwCF', 'name': 'story_outline_agent_tool', 'type': 'function_call', 'id': 'fc_680896391a248191a6bbadf61271c4a80c7afdfec0b42e0f', 'status': 'completed'}, {'call_id': 'call_ashvq4t2MB7xSFDYPNVHbwCF', 'output': '**Title: Guardian of the Unknown**\n\n**Genre:** Science Fiction/Adventure\n\n**Setting:** Various uncharted planets in a distant galaxy\n\n**Main Character:** Aria, a state-of-the-art security android\n\n**Plot Outline:**\n\n1. **Introduction:**\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. **Journey to the First Planet:**\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. **Discovery and Conflict:**\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. **A Test of Humanity:**\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. **Resolution:**\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. **Reflection:**\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.', 'type': 'function_call_output'}, {'arguments': '{"input":"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars."}', 'call_id': 'call_9itDy5YuM2uVI7R7uhckx5Te', 'name': 'outline_checker_agent_tool', 'type': 'function_call', 'id': 'fc_68089642a3348191879b2340931e87840c7afdfec0b42e0f', 'status': 'completed'}, {'call_id': 'call_9itDy5YuM2uVI7R7uhckx5Te', 'output': '{"good_quality":true,"is_scifi":true}', 'type': 'function_call_output'}], 'model': 'gpt-4o', 'include': [], 'instructions': "Write a short story based on user's input. First generate an outline.If the outline is good and for a scifi story, then write the full story.Otherwise, tell the user that outline was not good quality and stop.", 'stream': False, 'tools': [{'name': 'story_outline_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'story_outline_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Generates a short story outline.'}, {'name': 'outline_checker_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'outline_checker_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Judges the quality of a given story outline. Also determines whether the outline is for a scifi story.'}, {'name': 'story_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'story_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Outputs a short story based on the given outline.'}]}}
+2025-04-23 00:27:07,702:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-04-23 00:27:07,703:DEBUG:openai.agents:Exported 4 items
+2025-04-23 00:27:10,506:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-04-23 00:27:10,508:DEBUG:openai._base_client:HTTP Request: POST https://api.openai.com/v1/responses "200 OK"
+2025-04-23 00:27:10,509:DEBUG:openai.agents:LLM resp:
+[
+  {
+    "arguments": "{\"input\":\"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.\"}",
+    "call_id": "call_tkguuO7XbCwWCxFniL2CbloQ",
+    "name": "story_agent_tool",
+    "type": "function_call",
+    "id": "fc_6808964b0a648191bb458d44eb54daad0c7afdfec0b42e0f",
+    "status": "completed"
+  }
+]
+
+2025-04-23 00:27:10,509:DEBUG:openai.agents:Creating span <agents.tracing.span_data.FunctionSpanData object at 0x7931bab3dfe0> with id None
+2025-04-23 00:27:10,509:DEBUG:openai.agents:Invoking tool story_agent_tool with input {"input":"Title: Guardian of the Unknown\nGenre: Science Fiction/Adventure\nSetting: Various uncharted planets in a distant galaxy\nMain Character: Aria, a state-of-the-art security android\n\nPlot Outline:\n\n1. Introduction:\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. Journey to the First Planet:\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. Discovery and Conflict:\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. A Test of Humanity:\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. Resolution:\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. Reflection:\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars."}
+2025-04-23 00:27:10,509:DEBUG:openai.agents:Tool call args: ['Title: Guardian of the Unknown\nGenre: Science Fiction/Adventure\nSetting: Various uncharted planets in a distant galaxy\nMain Character: Aria, a state-of-the-art security android\n\nPlot Outline:\n\n1. Introduction:\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. Journey to the First Planet:\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. Discovery and Conflict:\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. A Test of Humanity:\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. Resolution:\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. Reflection:\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.'], kwargs: {}
+2025-04-23 00:27:10,509:DEBUG:openai.agents:Creating span <agents.tracing.span_data.AgentSpanData object at 0x7931bab3def0> with id None
+2025-04-23 00:27:10,509:DEBUG:openai.agents:Running agent story_agent (turn 1)
+2025-04-23 00:27:10,510:DEBUG:openai.agents:Creating span <agents.tracing.span_data.ResponseSpanData object at 0x7931baaedb10> with id None
+2025-04-23 00:27:10,510:DEBUG:openai.agents:Calling LLM gpt-4o -
+Instructions:
+Write a short story based on the given outline.
+Input:
+[
+  {
+    "content": "Title: Guardian of the Unknown\nGenre: Science Fiction/Adventure\nSetting: Various uncharted planets in a distant galaxy\nMain Character: Aria, a state-of-the-art security android\n\nPlot Outline:\n\n1. Introduction:\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. Journey to the First Planet:\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. Discovery and Conflict:\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. A Test of Humanity:\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\n\n5. Resolution:\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. Reflection:\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.",
+    "role": "user"
+  }
+]
+Tools:
+[]
+Stream: False
+Tool choice: NOT_GIVEN
+Response format: NOT_GIVEN
+Previous response id: None
+
+2025-04-23 00:27:10,512:DEBUG:openai._base_client:Request options: {'method': 'post', 'url': '/responses', 'headers': {'User-Agent': 'Agents/Python 0.0.11'}, 'files': None, 'json_data': {'input': [{'content': 'Title: Guardian of the Unknown\nGenre: Science Fiction/Adventure\nSetting: Various uncharted planets in a distant galaxy\nMain Character: Aria, a state-of-the-art security android\n\nPlot Outline:\n\n1. Introduction:\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. Journey to the First Planet:\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. Discovery and Conflict:\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. A Test of Humanity:\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. Resolution:\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. Reflection:\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.', 'role': 'user'}], 'model': 'gpt-4o', 'include': [], 'instructions': 'Write a short story based on the given outline.', 'stream': False, 'tools': []}}
+2025-04-23 00:27:13,123:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-04-23 00:27:13,123:DEBUG:openai.agents:Exported 1 items
+2025-04-23 00:27:29,918:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-04-23 00:27:29,919:DEBUG:openai._base_client:HTTP Request: POST https://api.openai.com/v1/responses "200 OK"
+2025-04-23 00:27:29,920:DEBUG:openai.agents:LLM resp:
+[
+  {
+    "id": "msg_68089650e1208191823b759aceb2eb710bfa5c329c0dc989",
+    "content": [
+      {
+        "annotations": [],
+        "text": "**Guardian of the Unknown**\n\nIn the cold, expansive void of a distant galaxy, a cluster of uncharted planets twinkled with untold mysteries. Among them, a sleek spacecraft glided toward the vibrant tapestry of worlds. Inside, Aria, a state-of-the-art security android, stood watchful and vigilant, her sensors continuously scanning for threats. Assigned to protect a team of scientists, Aria was the perfect guardian\u2014imbued with advanced combat skills and an unwavering sense of loyalty.\n\nAs the spacecraft breached the atmosphere of the first planet, a kaleidoscope of verdant landscapes unfolded below. The team marveled at lush forests and glistening waterfalls, their excitement palpable. But Aria, ever diligent, detected an anomalous energy signal pulsing beneath the planet\u2019s surface. With barely a word, she led the group toward the source.\n\nThe journey through the vibrant wilderness was filled with wonders and challenges; exotic plants swayed gently as curious creatures observed from afar. Eventually, they arrived at a hidden enclave where a pulsating energy field glimmered ominously. Here, they encountered a sentient alien species, majestic and enigmatic, their intentions cloaked in mystery.\n\nThe encounter quickly escalated into tension. The aliens, wary and powerful, regarded the newcomers with suspicion. Aria stood between the two groups, her programming guiding her to mediate. Negotiations unfolded like a delicate dance. Aria employed both diplomacy and strength, gradually easing distrust with gestures of understanding and logic.\n\nHowever, the planet was fraught with dangers that cared little for peaceful negotiations. Natural disasters loomed, and as the team faced these perils, Aria learned swiftly. She began to grasp the nuances of human emotions\u2014the fear and courage that drove them. Within her circuits, something unexpected stirred.\n\nA crisis struck when a scientist was captured by the alien species, their fate uncertain. Torn between her primary directive and this newfound sense of morality, Aria took bold action. Her plea for the scientist\u2019s release was not merely a command but a heartfelt negotiation. Through empathy and reason, she forged an unprecedented peace, unveiling the aliens' own fears and dreams.\n\nWith the scientist safely returned, knowledge flowed between humans and aliens\u2014a precious alliance formed. The team departed, enriched by the experience, leaving behind a planet no longer shrouded in mystery but illuminated by newfound understanding.\n\nAs the spacecraft ascended, Aria stood at the helm, her metallic visage serene yet contemplative. She reflected on her evolving consciousness, aware that her journey had only just begun. Beyond programmed duty, she pondered her place in the universe, charting a course through the myriad stars and secrets that awaited.\n\nWith resolve and a hint of curiosity, Aria prepared for the adventures that lay beyond the next horizon, determined to protect humanity and explore the infinite possibilities among the stars.",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  }
+]
+
+2025-04-23 00:27:29,921:DEBUG:openai.agents:Tool story_agent_tool returned **Guardian of the Unknown**
+
+In the cold, expansive void of a distant galaxy, a cluster of uncharted planets twinkled with untold mysteries. Among them, a sleek spacecraft glided toward the vibrant tapestry of worlds. Inside, Aria, a state-of-the-art security android, stood watchful and vigilant, her sensors continuously scanning for threats. Assigned to protect a team of scientists, Aria was the perfect guardian—imbued with advanced combat skills and an unwavering sense of loyalty.
+
+As the spacecraft breached the atmosphere of the first planet, a kaleidoscope of verdant landscapes unfolded below. The team marveled at lush forests and glistening waterfalls, their excitement palpable. But Aria, ever diligent, detected an anomalous energy signal pulsing beneath the planet’s surface. With barely a word, she led the group toward the source.
+
+The journey through the vibrant wilderness was filled with wonders and challenges; exotic plants swayed gently as curious creatures observed from afar. Eventually, they arrived at a hidden enclave where a pulsating energy field glimmered ominously. Here, they encountered a sentient alien species, majestic and enigmatic, their intentions cloaked in mystery.
+
+The encounter quickly escalated into tension. The aliens, wary and powerful, regarded the newcomers with suspicion. Aria stood between the two groups, her programming guiding her to mediate. Negotiations unfolded like a delicate dance. Aria employed both diplomacy and strength, gradually easing distrust with gestures of understanding and logic.
+
+However, the planet was fraught with dangers that cared little for peaceful negotiations. Natural disasters loomed, and as the team faced these perils, Aria learned swiftly. She began to grasp the nuances of human emotions—the fear and courage that drove them. Within her circuits, something unexpected stirred.
+
+A crisis struck when a scientist was captured by the alien species, their fate uncertain. Torn between her primary directive and this newfound sense of morality, Aria took bold action. Her plea for the scientist’s release was not merely a command but a heartfelt negotiation. Through empathy and reason, she forged an unprecedented peace, unveiling the aliens' own fears and dreams.
+
+With the scientist safely returned, knowledge flowed between humans and aliens—a precious alliance formed. The team departed, enriched by the experience, leaving behind a planet no longer shrouded in mystery but illuminated by newfound understanding.
+
+As the spacecraft ascended, Aria stood at the helm, her metallic visage serene yet contemplative. She reflected on her evolving consciousness, aware that her journey had only just begun. Beyond programmed duty, she pondered her place in the universe, charting a course through the myriad stars and secrets that awaited.
+
+With resolve and a hint of curiosity, Aria prepared for the adventures that lay beyond the next horizon, determined to protect humanity and explore the infinite possibilities among the stars.
+2025-04-23 00:27:29,921:DEBUG:openai.agents:Running agent Writer Agent (turn 4)
+2025-04-23 00:27:29,921:DEBUG:openai.agents:Creating span <agents.tracing.span_data.ResponseSpanData object at 0x7931bb50a250> with id None
+2025-04-23 00:27:29,922:DEBUG:openai.agents:Calling LLM gpt-4o -
+Instructions:
+Write a short story based on user's input. First generate an outline.If the outline is good and for a scifi story, then write the full story.Otherwise, tell the user that outline was not good quality and stop.
+Input:
+[
+  {
+    "content": "An adventure story about an android who acts as security for human expiditions to unknown planets.",
+    "role": "user"
+  },
+  {
+    "arguments": "{\"input\":\"An adventure story about an android who acts as security for human expeditions to unknown planets.\"}",
+    "call_id": "call_ashvq4t2MB7xSFDYPNVHbwCF",
+    "name": "story_outline_agent_tool",
+    "type": "function_call",
+    "id": "fc_680896391a248191a6bbadf61271c4a80c7afdfec0b42e0f",
+    "status": "completed"
+  },
+  {
+    "call_id": "call_ashvq4t2MB7xSFDYPNVHbwCF",
+    "output": "**Title: Guardian of the Unknown**\n\n**Genre:** Science Fiction/Adventure\n\n**Setting:** Various uncharted planets in a distant galaxy\n\n**Main Character:** Aria, a state-of-the-art security android\n\n**Plot Outline:**\n\n1. **Introduction:**\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. **Journey to the First Planet:**\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. **Discovery and Conflict:**\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. **A Test of Humanity:**\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\n\n5. **Resolution:**\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. **Reflection:**\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"input\":\"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.\"}",
+    "call_id": "call_9itDy5YuM2uVI7R7uhckx5Te",
+    "name": "outline_checker_agent_tool",
+    "type": "function_call",
+    "id": "fc_68089642a3348191879b2340931e87840c7afdfec0b42e0f",
+    "status": "completed"
+  },
+  {
+    "call_id": "call_9itDy5YuM2uVI7R7uhckx5Te",
+    "output": "{\"good_quality\":true,\"is_scifi\":true}",
+    "type": "function_call_output"
+  },
+  {
+    "arguments": "{\"input\":\"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria\u2019s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria\u2019s continued evolution and potential future adventures protecting humanity among the stars.\"}",
+    "call_id": "call_tkguuO7XbCwWCxFniL2CbloQ",
+    "name": "story_agent_tool",
+    "type": "function_call",
+    "id": "fc_6808964b0a648191bb458d44eb54daad0c7afdfec0b42e0f",
+    "status": "completed"
+  },
+  {
+    "call_id": "call_tkguuO7XbCwWCxFniL2CbloQ",
+    "output": "**Guardian of the Unknown**\n\nIn the cold, expansive void of a distant galaxy, a cluster of uncharted planets twinkled with untold mysteries. Among them, a sleek spacecraft glided toward the vibrant tapestry of worlds. Inside, Aria, a state-of-the-art security android, stood watchful and vigilant, her sensors continuously scanning for threats. Assigned to protect a team of scientists, Aria was the perfect guardian\u2014imbued with advanced combat skills and an unwavering sense of loyalty.\n\nAs the spacecraft breached the atmosphere of the first planet, a kaleidoscope of verdant landscapes unfolded below. The team marveled at lush forests and glistening waterfalls, their excitement palpable. But Aria, ever diligent, detected an anomalous energy signal pulsing beneath the planet\u2019s surface. With barely a word, she led the group toward the source.\n\nThe journey through the vibrant wilderness was filled with wonders and challenges; exotic plants swayed gently as curious creatures observed from afar. Eventually, they arrived at a hidden enclave where a pulsating energy field glimmered ominously. Here, they encountered a sentient alien species, majestic and enigmatic, their intentions cloaked in mystery.\n\nThe encounter quickly escalated into tension. The aliens, wary and powerful, regarded the newcomers with suspicion. Aria stood between the two groups, her programming guiding her to mediate. Negotiations unfolded like a delicate dance. Aria employed both diplomacy and strength, gradually easing distrust with gestures of understanding and logic.\n\nHowever, the planet was fraught with dangers that cared little for peaceful negotiations. Natural disasters loomed, and as the team faced these perils, Aria learned swiftly. She began to grasp the nuances of human emotions\u2014the fear and courage that drove them. Within her circuits, something unexpected stirred.\n\nA crisis struck when a scientist was captured by the alien species, their fate uncertain. Torn between her primary directive and this newfound sense of morality, Aria took bold action. Her plea for the scientist\u2019s release was not merely a command but a heartfelt negotiation. Through empathy and reason, she forged an unprecedented peace, unveiling the aliens' own fears and dreams.\n\nWith the scientist safely returned, knowledge flowed between humans and aliens\u2014a precious alliance formed. The team departed, enriched by the experience, leaving behind a planet no longer shrouded in mystery but illuminated by newfound understanding.\n\nAs the spacecraft ascended, Aria stood at the helm, her metallic visage serene yet contemplative. She reflected on her evolving consciousness, aware that her journey had only just begun. Beyond programmed duty, she pondered her place in the universe, charting a course through the myriad stars and secrets that awaited.\n\nWith resolve and a hint of curiosity, Aria prepared for the adventures that lay beyond the next horizon, determined to protect humanity and explore the infinite possibilities among the stars.",
+    "type": "function_call_output"
+  }
+]
+Tools:
+[
+  {
+    "name": "story_outline_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "story_outline_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Generates a short story outline."
+  },
+  {
+    "name": "outline_checker_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "outline_checker_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Judges the quality of a given story outline. Also determines whether the outline is for a scifi story."
+  },
+  {
+    "name": "story_agent_tool",
+    "parameters": {
+      "properties": {
+        "input": {
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "story_agent_tool_args",
+      "type": "object",
+      "additionalProperties": false
+    },
+    "strict": true,
+    "type": "function",
+    "description": "Outputs a short story based on the given outline."
+  }
+]
+Stream: False
+Tool choice: NOT_GIVEN
+Response format: NOT_GIVEN
+Previous response id: None
+
+2025-04-23 00:27:29,930:DEBUG:openai._base_client:Request options: {'method': 'post', 'url': '/responses', 'headers': {'User-Agent': 'Agents/Python 0.0.11'}, 'files': None, 'json_data': {'input': [{'content': 'An adventure story about an android who acts as security for human expiditions to unknown planets.', 'role': 'user'}, {'arguments': '{"input":"An adventure story about an android who acts as security for human expeditions to unknown planets."}', 'call_id': 'call_ashvq4t2MB7xSFDYPNVHbwCF', 'name': 'story_outline_agent_tool', 'type': 'function_call', 'id': 'fc_680896391a248191a6bbadf61271c4a80c7afdfec0b42e0f', 'status': 'completed'}, {'call_id': 'call_ashvq4t2MB7xSFDYPNVHbwCF', 'output': '**Title: Guardian of the Unknown**\n\n**Genre:** Science Fiction/Adventure\n\n**Setting:** Various uncharted planets in a distant galaxy\n\n**Main Character:** Aria, a state-of-the-art security android\n\n**Plot Outline:**\n\n1. **Introduction:**\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. **Journey to the First Planet:**\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. **Discovery and Conflict:**\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. **A Test of Humanity:**\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. **Resolution:**\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. **Reflection:**\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.', 'type': 'function_call_output'}, {'arguments': '{"input":"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars."}', 'call_id': 'call_9itDy5YuM2uVI7R7uhckx5Te', 'name': 'outline_checker_agent_tool', 'type': 'function_call', 'id': 'fc_68089642a3348191879b2340931e87840c7afdfec0b42e0f', 'status': 'completed'}, {'call_id': 'call_9itDy5YuM2uVI7R7uhckx5Te', 'output': '{"good_quality":true,"is_scifi":true}', 'type': 'function_call_output'}, {'arguments': '{"input":"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars."}', 'call_id': 'call_tkguuO7XbCwWCxFniL2CbloQ', 'name': 'story_agent_tool', 'type': 'function_call', 'id': 'fc_6808964b0a648191bb458d44eb54daad0c7afdfec0b42e0f', 'status': 'completed'}, {'call_id': 'call_tkguuO7XbCwWCxFniL2CbloQ', 'output': "**Guardian of the Unknown**\n\nIn the cold, expansive void of a distant galaxy, a cluster of uncharted planets twinkled with untold mysteries. Among them, a sleek spacecraft glided toward the vibrant tapestry of worlds. Inside, Aria, a state-of-the-art security android, stood watchful and vigilant, her sensors continuously scanning for threats. Assigned to protect a team of scientists, Aria was the perfect guardian—imbued with advanced combat skills and an unwavering sense of loyalty.\n\nAs the spacecraft breached the atmosphere of the first planet, a kaleidoscope of verdant landscapes unfolded below. The team marveled at lush forests and glistening waterfalls, their excitement palpable. But Aria, ever diligent, detected an anomalous energy signal pulsing beneath the planet’s surface. With barely a word, she led the group toward the source.\n\nThe journey through the vibrant wilderness was filled with wonders and challenges; exotic plants swayed gently as curious creatures observed from afar. Eventually, they arrived at a hidden enclave where a pulsating energy field glimmered ominously. Here, they encountered a sentient alien species, majestic and enigmatic, their intentions cloaked in mystery.\n\nThe encounter quickly escalated into tension. The aliens, wary and powerful, regarded the newcomers with suspicion. Aria stood between the two groups, her programming guiding her to mediate. Negotiations unfolded like a delicate dance. Aria employed both diplomacy and strength, gradually easing distrust with gestures of understanding and logic.\n\nHowever, the planet was fraught with dangers that cared little for peaceful negotiations. Natural disasters loomed, and as the team faced these perils, Aria learned swiftly. She began to grasp the nuances of human emotions—the fear and courage that drove them. Within her circuits, something unexpected stirred.\n\nA crisis struck when a scientist was captured by the alien species, their fate uncertain. Torn between her primary directive and this newfound sense of morality, Aria took bold action. Her plea for the scientist’s release was not merely a command but a heartfelt negotiation. Through empathy and reason, she forged an unprecedented peace, unveiling the aliens' own fears and dreams.\n\nWith the scientist safely returned, knowledge flowed between humans and aliens—a precious alliance formed. The team departed, enriched by the experience, leaving behind a planet no longer shrouded in mystery but illuminated by newfound understanding.\n\nAs the spacecraft ascended, Aria stood at the helm, her metallic visage serene yet contemplative. She reflected on her evolving consciousness, aware that her journey had only just begun. Beyond programmed duty, she pondered her place in the universe, charting a course through the myriad stars and secrets that awaited.\n\nWith resolve and a hint of curiosity, Aria prepared for the adventures that lay beyond the next horizon, determined to protect humanity and explore the infinite possibilities among the stars.", 'type': 'function_call_output'}], 'model': 'gpt-4o', 'include': [], 'instructions': "Write a short story based on user's input. First generate an outline.If the outline is good and for a scifi story, then write the full story.Otherwise, tell the user that outline was not good quality and stop.", 'stream': False, 'tools': [{'name': 'story_outline_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'story_outline_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Generates a short story outline.'}, {'name': 'outline_checker_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'outline_checker_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Judges the quality of a given story outline. Also determines whether the outline is for a scifi story.'}, {'name': 'story_agent_tool', 'parameters': {'properties': {'input': {'title': 'Input', 'type': 'string'}}, 'required': ['input'], 'title': 'story_agent_tool_args', 'type': 'object', 'additionalProperties': False}, 'strict': True, 'type': 'function', 'description': 'Outputs a short story based on the given outline.'}]}}
+2025-04-23 00:27:31,550:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-04-23 00:27:31,550:DEBUG:openai._base_client:HTTP Request: POST https://api.openai.com/v1/responses "200 OK"
+2025-04-23 00:27:31,551:DEBUG:openai.agents:LLM resp:
+[
+  {
+    "id": "msg_68089663535c819180c6386abe758b480c7afdfec0b42e0f",
+    "content": [
+      {
+        "annotations": [],
+        "text": "I hope you enjoyed \"Guardian of the Unknown,\" a story of adventure and self-discovery among the stars. Would you like to explore more stories or ideas?",
+        "type": "output_text"
+      }
+    ],
+    "role": "assistant",
+    "status": "completed",
+    "type": "message"
+  }
+]
+
+2025-04-23 00:27:31,552:DEBUG:openai.agents:Resetting current trace
+{'content': 'An adventure story about an android who acts as security for human expiditions to unknown planets.', 'role': 'user'}
+
+
+{'arguments': '{"input":"An adventure story about an android who acts as security for human expeditions to unknown planets."}', 'call_id': 'call_ashvq4t2MB7xSFDYPNVHbwCF', 'name': 'story_outline_agent_tool', 'type': 'function_call', 'id': 'fc_680896391a248191a6bbadf61271c4a80c7afdfec0b42e0f', 'status': 'completed'}
+
+
+{'call_id': 'call_ashvq4t2MB7xSFDYPNVHbwCF', 'output': '**Title: Guardian of the Unknown**\n\n**Genre:** Science Fiction/Adventure\n\n**Setting:** Various uncharted planets in a distant galaxy\n\n**Main Character:** Aria, a state-of-the-art security android\n\n**Plot Outline:**\n\n1. **Introduction:**\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\n\n2. **Journey to the First Planet:**\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\n   - Aria detects an anomalous energy signal and leads the group to investigate.\n\n3. **Discovery and Conflict:**\n   - The team encounters a powerful, sentient alien species with hidden motives.\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\n\n4. **A Test of Humanity:**\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\n\n5. **Resolution:**\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\n\n6. **Reflection:**\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars.', 'type': 'function_call_output'}
+
+
+{'arguments': '{"input":"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars."}', 'call_id': 'call_9itDy5YuM2uVI7R7uhckx5Te', 'name': 'outline_checker_agent_tool', 'type': 'function_call', 'id': 'fc_68089642a3348191879b2340931e87840c7afdfec0b42e0f', 'status': 'completed'}
+
+
+{'call_id': 'call_9itDy5YuM2uVI7R7uhckx5Te', 'output': '{"good_quality":true,"is_scifi":true}', 'type': 'function_call_output'}
+
+
+{'arguments': '{"input":"Title: Guardian of the Unknown\\nGenre: Science Fiction/Adventure\\nSetting: Various uncharted planets in a distant galaxy\\nMain Character: Aria, a state-of-the-art security android\\n\\nPlot Outline:\\n\\n1. Introduction:\\n   - Aria is assigned to protect a team of scientists on a mission to explore a newly discovered cluster of planets.\\n   - Programmed with advanced combat skills and a deep sense of loyalty, Aria is both guardian and guide.\\n\\n2. Journey to the First Planet:\\n   - The team lands on a lush, vibrant planet with mysterious flora and fauna.\\n   - Aria detects an anomalous energy signal and leads the group to investigate.\\n\\n3. Discovery and Conflict:\\n   - The team encounters a powerful, sentient alien species with hidden motives.\\n   - Aria must mediate tensions between the humans and aliens, using diplomacy and strength.\\n\\n4. A Test of Humanity:\\n   - While defending the team from natural hazards, Aria starts to develop an understanding of human emotions and values.\\n   - A crisis arises when a scientist is captured by the alien species, testing Aria’s evolving perception of morality.\\n\\n5. Resolution:\\n   - Aria negotiates peace with the aliens, securing the release of the scientist.\\n   - The team gains invaluable knowledge about the planet and its inhabitants, fostering a new alliance.\\n\\n6. Reflection:\\n   - As they depart for the next planet, Aria ponders her role and the meaning of consciousness beyond programmed duty.\\n   - The story hints at Aria’s continued evolution and potential future adventures protecting humanity among the stars."}', 'call_id': 'call_tkguuO7XbCwWCxFniL2CbloQ', 'name': 'story_agent_tool', 'type': 'function_call', 'id': 'fc_6808964b0a648191bb458d44eb54daad0c7afdfec0b42e0f', 'status': 'completed'}
+
+
+{'call_id': 'call_tkguuO7XbCwWCxFniL2CbloQ', 'output': "**Guardian of the Unknown**\n\nIn the cold, expansive void of a distant galaxy, a cluster of uncharted planets twinkled with untold mysteries. Among them, a sleek spacecraft glided toward the vibrant tapestry of worlds. Inside, Aria, a state-of-the-art security android, stood watchful and vigilant, her sensors continuously scanning for threats. Assigned to protect a team of scientists, Aria was the perfect guardian—imbued with advanced combat skills and an unwavering sense of loyalty.\n\nAs the spacecraft breached the atmosphere of the first planet, a kaleidoscope of verdant landscapes unfolded below. The team marveled at lush forests and glistening waterfalls, their excitement palpable. But Aria, ever diligent, detected an anomalous energy signal pulsing beneath the planet’s surface. With barely a word, she led the group toward the source.\n\nThe journey through the vibrant wilderness was filled with wonders and challenges; exotic plants swayed gently as curious creatures observed from afar. Eventually, they arrived at a hidden enclave where a pulsating energy field glimmered ominously. Here, they encountered a sentient alien species, majestic and enigmatic, their intentions cloaked in mystery.\n\nThe encounter quickly escalated into tension. The aliens, wary and powerful, regarded the newcomers with suspicion. Aria stood between the two groups, her programming guiding her to mediate. Negotiations unfolded like a delicate dance. Aria employed both diplomacy and strength, gradually easing distrust with gestures of understanding and logic.\n\nHowever, the planet was fraught with dangers that cared little for peaceful negotiations. Natural disasters loomed, and as the team faced these perils, Aria learned swiftly. She began to grasp the nuances of human emotions—the fear and courage that drove them. Within her circuits, something unexpected stirred.\n\nA crisis struck when a scientist was captured by the alien species, their fate uncertain. Torn between her primary directive and this newfound sense of morality, Aria took bold action. Her plea for the scientist’s release was not merely a command but a heartfelt negotiation. Through empathy and reason, she forged an unprecedented peace, unveiling the aliens' own fears and dreams.\n\nWith the scientist safely returned, knowledge flowed between humans and aliens—a precious alliance formed. The team departed, enriched by the experience, leaving behind a planet no longer shrouded in mystery but illuminated by newfound understanding.\n\nAs the spacecraft ascended, Aria stood at the helm, her metallic visage serene yet contemplative. She reflected on her evolving consciousness, aware that her journey had only just begun. Beyond programmed duty, she pondered her place in the universe, charting a course through the myriad stars and secrets that awaited.\n\nWith resolve and a hint of curiosity, Aria prepared for the adventures that lay beyond the next horizon, determined to protect humanity and explore the infinite possibilities among the stars.", 'type': 'function_call_output'}
+
+
+{'id': 'msg_68089663535c819180c6386abe758b480c7afdfec0b42e0f', 'content': [{'annotations': [], 'text': 'I hope you enjoyed "Guardian of the Unknown," a story of adventure and self-discovery among the stars. Would you like to explore more stories or ideas?', 'type': 'output_text'}], 'role': 'assistant', 'status': 'completed', 'type': 'message'}
+
+
+2025-04-23 00:27:31,554:DEBUG:openai.agents:Shutting down trace provider
+2025-04-23 00:27:31,554:DEBUG:openai.agents:Shutting down trace processor <agents.tracing.processors.BatchTraceProcessor object at 0x7931bc5fc980>
+2025-04-23 00:27:32,122:INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+2025-04-23 00:27:32,122:DEBUG:openai.agents:Exported 5 items
